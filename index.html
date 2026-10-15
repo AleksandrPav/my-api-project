@@ -6,9 +6,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <!-- CSS -->
     <link rel="stylesheet" href="/CSS/base.css">
+    <link rel="stylesheet" href="/CSS/card.css">
+    <link rel="stylesheet" href="/CSS/header.css">
     <link rel="stylesheet" href="/CSS/responsive.css">
+    <link rel="stylesheet" href="/CSS/search-box.css">
+    <link rel="stylesheet" href="/CSS/suggestions_box.css">
     <!-- JS -->
-    <script defer src="script.js"></script>
+    <script type="module" src="/script.js"></script>
+    <!-- alert widget -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
@@ -17,9 +23,10 @@
     </header>
 
     <section class="search-box">
-        <input type="text" id="searchInput" placeholder="Введи назву фільму...">
-        <button id="searchBtn">Пошук</button>
-    </section>
+    <input type="text" id="searchInput" placeholder="Введи назву фільму...">
+    <div id="suggestions" class="suggestions-box"></div>
+    <button id="searchBtn">Пошук</button>
+</section>
 
     <section id="results" class="results"></section>
 

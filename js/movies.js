@@ -1,0 +1,1 @@
+export const keywords = ["movie", "film", "new", "latest"];
