@@ -1,0 +1,48 @@
+/* ===== RESPONSIVE ===== */
+
+/* Phones */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 24px;
+    }
+
+    .results {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 28px;
+    }
+}
+
+/* Laptops */
+@media (min-width: 769px) and (max-width: 1200px) {
+    header h1 {
+        font-size: 34px;
+    }
+}
+
+/* Large monitors */
+@media (min-width: 1201px) and (max-width: 2000px) {
+    header h1 {
+        font-size: 40px;
+    }
+}
+
+/* TVs */
+@media (min-width: 2001px) {
+    header h1 {
+        font-size: 60px;
+    }
+
+    .card img {
+        height: 350px;
+    }
+
+    .card {
+        padding-bottom: 20px;
+    }
+}
