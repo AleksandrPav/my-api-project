@@ -4,6 +4,7 @@ import { clearResults, addMovieCard } from "./js/render.js";
 import { initSearchSuggestions } from "./js/search-suggestions.js";
 import { netflixAlertNotFound } from "./js/netflixAlert.js";
 import { initLoadMore } from "./js/loadMore.js";
+import { openMovieModal } from "./js/movieModal.js"
 
 window.addEventListener("DOMContentLoaded", () => {
 
@@ -11,7 +12,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
     loadNewReleases(2026);
 
-    initLoadMore(); // <- обов'язково
+    initLoadMore();
+
+    
 
 });
 document.getElementById("searchBtn").addEventListener("click", () => {

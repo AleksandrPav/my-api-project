@@ -1,5 +1,6 @@
 
 import { state } from "./state.js";
+import { openMovieModal } from "./movieModal.js";
 
 export function clearResults() {
     const box = document.getElementById("results");
@@ -7,6 +8,8 @@ export function clearResults() {
 }
 
 export function addMovieCard(movie) {
+
+    if (!movie) return;
 
     const box = document.getElementById("results");
 
@@ -23,37 +26,43 @@ export function addMovieCard(movie) {
             ? movie.imdbRating
             : "—";
 
-    box.innerHTML += `
-        <div class="card">
+    const card = document.createElement("div");
 
-            <div class="poster-wrapper">
+    card.className = "card";
 
-                <img
-                    src="${poster}"
-                    alt="${movie.Title}"
-                    loading="lazy"
-                >
+    card.innerHTML = `
+        <div class="poster-wrapper">
 
-                <div class="rating-badge">
-                    ⭐ ${rating}
-                </div>
+            <img
+                src="${poster}"
+                alt="${movie.Title}"
+                loading="lazy"
+            >
 
-            </div>
-
-            <div class="card-content">
-
-                <h3 class="movie-title">
-                    ${movie.Title}
-                </h3>
-
-                <p class="movie-info">
-                    ${genre} • ${movie.Year}
-                </p>
-
+            <div class="rating-badge">
+                ⭐ ${rating}
             </div>
 
         </div>
+
+        <div class="card-content">
+
+            <h3 class="movie-title">
+                ${movie.Title}
+            </h3>
+
+            <p class="movie-info">
+                ${genre} • ${movie.Year}
+            </p>
+
+        </div>
     `;
+
+    card.addEventListener("click", () => {
+        openMovieModal(movie);
+    });
+
+    box.appendChild(card);
 }
 
 export function renderMovies() {
@@ -63,5 +72,4 @@ export function renderMovies() {
     state.movies
         .slice(0, state.visibleMovies)
         .forEach(movie => addMovieCard(movie));
-
 }
