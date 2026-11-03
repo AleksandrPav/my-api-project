@@ -1,24 +1,47 @@
-import { searchMovies } from "./api.js"
-import { addMovieCard, clearResults } from "./render.js";
+import { searchMovies,  getMovieDetails } from "./api.js"
 import { keywords } from "./movies.js";
+import { state } from "./state.js";
+import { renderMovies } from "./render.js";
+import { updateButton } from "./loadMore.js";
+export async function loadNewReleases(year) {
 
-export function loadNewReleases(year) {
     const box = document.getElementById("results");
     box.innerHTML = "<p>Завантаження новинок...</p>";
 
-    let firstLoaded = false;
+    const results = await Promise.all(
+        keywords.map(word => searchMovies(word, year))
+    );
 
-    keywords.forEach(word => {
-        searchMovies(word, year).then(data => {
-            if (data.Search && data.Search.length > 0) {
+    const movies = [];
 
-                if (!firstLoaded) {
-                    clearResults();
-                    firstLoaded = true;
-                }
+    results.forEach(data => {
 
-                data.Search.forEach(movie => addMovieCard(movie));
-            }
-        });
+        if (data.Search) {
+            movies.push(...data.Search);
+        }
+
     });
+
+    const uniqueMovies = [
+        ...new Map(
+            movies.map(movie => [movie.imdbID, movie])
+        ).values()
+    ];
+
+    const detailedMovies = await Promise.all(
+        uniqueMovies.map(movie =>
+            getMovieDetails(movie.imdbID)
+        )
+    );
+
+
+    state.movies = detailedMovies.filter(
+    movie => movie && movie.Response === "True"
+);
+
+
+    renderMovies();
+
+updateButton();
 }
+
