@@ -1,5 +1,5 @@
 const API_KEY = "9d7eafa7";
-    const BASE_URL = `http://www.omdbapi.com/?apikey=${API_KEY}&`;
+    const BASE_URL = `https://www.omdbapi.com/?apikey=${API_KEY}&`;
 
 
  export async function searchMovies(query, year = null) {
