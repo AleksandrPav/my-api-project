@@ -1,4 +1,4 @@
 export const state = {
     movies: [],
-    visibleMovies: 10
+    visibleMovies: 18
 };

@@ -7,7 +7,13 @@ import { initLoadMore } from "./js/loadMore.js";
 import { showFavorites }from "./js/showFavorites.js";
 import { goHome } from "./js/goHome.js";
 import {handleClearFavorites} from "./js/clearFavorites.js";
+import { searchMovie, getMovieTrailer }from "./js/tmdbApi.js";
 
+searchMovie("Batman Begins")
+    .then(data => console.log(data));
+    
+getMovieTrailer("Batman Begins")
+    .then(key => console.log(key));
 
 window.addEventListener("DOMContentLoaded", () => {
     initSearchSuggestions();
