@@ -23,3 +23,19 @@ header h1 {
     color: #e50914; /* Netflix red */
     margin: 0;
 }
+
+.favorites-header-btn {
+
+    background: #e50914;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.favorites-header-btn:hover {
+    background: #f6121d;
+}

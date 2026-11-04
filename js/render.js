@@ -1,6 +1,7 @@
 
 import { state } from "./state.js";
 import { openMovieModal } from "./movieModal.js";
+import { isFavorite, toggleFavorite } from "./favorites.js";
 
 export function clearResults() {
     const box = document.getElementById("results");
@@ -25,7 +26,7 @@ export function addMovieCard(movie) {
         movie.imdbRating && movie.imdbRating !== "N/A"
             ? movie.imdbRating
             : "—";
-
+const favorite = isFavorite(movie.imdbID);
     const card = document.createElement("div");
 
     card.className = "card";
@@ -42,6 +43,9 @@ export function addMovieCard(movie) {
             <div class="rating-badge">
                 ⭐ ${rating}
             </div>
+            <button class="favorite-btn">
+    ${favorite ? "❤️" : "🤍"}
+</button>
 
         </div>
 
@@ -57,6 +61,22 @@ export function addMovieCard(movie) {
 
         </div>
     `;
+
+    const favoriteBtn =
+    card.querySelector(".favorite-btn");
+
+    favoriteBtn.addEventListener("click", (event) => {
+
+    event.stopPropagation();
+
+    toggleFavorite(movie);
+
+    favoriteBtn.textContent =
+        isFavorite(movie.imdbID)
+            ? "❤️"
+            : "🤍";
+
+});
 
     card.addEventListener("click", () => {
         openMovieModal(movie);

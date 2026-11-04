@@ -58,7 +58,6 @@ export function openMovieModal(movie) {
         .getElementById("closeModal")
         .addEventListener("click", closeMovieModal);
 
-        console.log(movie);
 }
 
 export function closeMovieModal() {

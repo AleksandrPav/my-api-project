@@ -23,17 +23,27 @@
     <header>
         <h1>🎬 Movie Finder</h1>
     </header>
-
     <section class="search-box">
-    <input type="text" id="searchInput" placeholder="Введи назву фільму...">
+    <input type="text" id="searchInput" placeholder="Enter the movie title...">
     <div id="suggestions" class="suggestions-box"></div>
-    <button id="searchBtn">Пошук</button>
+    <button id="searchBtn">Search</button>
+    <button id="favoritesBtn" class="favorites-header-btn">
+    ❤️ My Favorites
+</button>
+<button id="clearFavoritesBtn">
+    🗑 Clear your selection
+</button>
+<button id="homeBtn"
+        style="display:none;">
+    🏠 Home
+</button>
 </section>
+
 
     <section id="results" class="results"></section>
 <div class="load-more-container">
     <button id="loadMoreBtn" class="load-more-btn">
-        Показати ще
+        Show more
     </button>
 </div>
 </body>
